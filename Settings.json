@@ -1,0 +1,8 @@
+{
+    "SiteCode": "YourSiteCodeHere",
+    "ServerAddress": "YourServerAddressHere",
+    "Prefix": null,
+    "RootFolderPath": "Hardware",
+    "Computers": true,
+    "VideoCards": false
+}

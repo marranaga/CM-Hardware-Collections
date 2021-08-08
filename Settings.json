@@ -4,5 +4,6 @@
     "Prefix": null,
     "RootFolderPath": "Hardware",
     "Computers": true,
-    "VideoCards": false
+    "VideoCards": false,
+    "LimitingCollectionName": "All Systems" 
 }

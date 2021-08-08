@@ -40,11 +40,11 @@ if ($Settings.Computers) {
         
         $ManufacturerWhere = if ($Manufacturer -eq 'Hewlett-Packard') {
             foreach ($Man in @('Hewlett-Packard', 'HP')) {
-                Write-Output 'SMS_G_System_COMPUTER_SYSTEM.Manufacturer = "{0}"' -f $Man
+                Write-Output ('SMS_G_System_COMPUTER_SYSTEM.Manufacturer = "{0}"' -f $Man)
             }
         } else {
             foreach ($Man in $Manufacturer) {
-                Write-Output 'SMS_G_System_COMPUTER_SYSTEM.Manufacturer = "{0}"' -f $Man
+                Write-Output ('SMS_G_System_COMPUTER_SYSTEM.Manufacturer = "{0}"' -f $Man)
             }
         }
 
@@ -81,7 +81,7 @@ if ($Settings.Computers) {
                 $NewCMDeviceCollection = @{
                     Name                   = $ManufacturerCollectionName
                     Comment                = ('All {0} systems' -f $Manufacturer)
-                    LimitingCollectionName = 'All Systems'
+                    LimitingCollectionName = $Settings.LimitingCollectionName
                     RefreshSchedule        = $RefreshSchedule
                 }
 
@@ -102,7 +102,7 @@ if ($Settings.Computers) {
                     $NewCMDeviceCollection = @{
                         Name                   = $ModelCollectionName
                         Comment                = ('All {0} systems of model {1}' -f $Manufacturer, $Model)
-                        LimitingCollectionName = 'All Systems'
+                        LimitingCollectionName = $Settings.LimitingCollectionName
                         RefreshSchedule        = $RefreshSchedule
                     }
 
@@ -173,7 +173,7 @@ if ($Settings.VideoCards) {
                 $NewCMDeviceCollection = @{
                     Name                   = $ManufacturerCollectionName
                     Comment                = ('All {0} graphics cards' -f $Manufacturer)
-                    LimitingCollectionName = 'All Systems'
+                    LimitingCollectionName = $Settings.LimitingCollectionName
                     RefreshSchedule        = $RefreshSchedule
                 }
 
@@ -225,7 +225,7 @@ if ($Settings.VideoCards) {
                     $NewCMDeviceCollection = @{
                         Name                   = $ModelCollectionName
                         Comment                = ('All {0} systems with a {1}' -f $Manufacturer, $Model)
-                        LimitingCollectionName = 'All Systems'
+                        LimitingCollectionName = $Settings.LimitingCollectionName
                         RefreshSchedule        = $RefreshSchedule
                     }
 

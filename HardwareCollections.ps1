@@ -25,6 +25,11 @@ $RefreshSchedule = New-CMSchedule -RecurInterval Days -Recurcount 1 -Start (Get-
 $FolderRoot = "$($Settings.SiteCode):\DeviceCollection\$($Settings.RootFolderPath)".Trim('\')
 Write-Verbose ('Folder Root: {0}' -f $FolderRoot)
 
+if (-not (Test-Path $FolderRoot)) {
+    Write-Verbose ('Root folder does not exist. Creating {0}' -f $FolderRoot)
+    New-Item -Path $FolderRoot -ItemType Directory -Force
+}
+
 if ($Settings.Computers) {
     # Getting a list of all Manufacturers
     $Manufacturers = (Invoke-CMWmiQuery -Query "select distinct SMS_G_System_PC_BIOS.Manufacturer from SMS_G_System_PC_BIOS").Manufacturer
